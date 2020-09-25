@@ -7,13 +7,13 @@ import { Typography, Button } from '@material-ui/core'
 // JSS Styles for this page
 const styles = theme => ({
     root: {
+        padding: '5vh',
         paddingTop: '30vh',
-        minHeight: '80vh',
         textAlign: 'center',
     },
     button: {
         marginTop: theme.spacing(5),
-        fontSize: '2vh'
+        fontSize: '20px'
     }
 })
 
