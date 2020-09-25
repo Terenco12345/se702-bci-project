@@ -1,27 +1,14 @@
-export const CHANGE_NAVIGATION_INDEX_PENDING = 'CHANGE_NAVIGATION_INDEX';
-export const CHANGE_NAVIGATION_INDEX_SUCCESS = 'CHANGE_NAVIGATION_INDEX';
-export const CHANGE_NAVIGATION_INDEX_ERROR = 'CHANGE_NAVIGATION_INDEX';
+export const CHANGE_NAVIGATION_INDEX = 'CHANGE_NAVIGATION_INDEX';
 
 // Action creators
-// Thunks for fetchCurrentUser
+// Thunks for changeNavigationIndex
 const changeNavigationIndexActionCreator = {
-    pending: () => {
-        return {
-            type: CHANGE_NAVIGATION_INDEX_PENDING,
-        }
-    },
     success: (index) => {
         return {
-            type: CHANGE_NAVIGATION_INDEX_SUCCESS,
+            type: CHANGE_NAVIGATION_INDEX,
             index: index
         }
     },
-    error: (error) => {
-        return {
-            type: CHANGE_NAVIGATION_INDEX_ERROR,
-            error: error
-        }
-    }
 }
 
 /**
@@ -29,11 +16,6 @@ const changeNavigationIndexActionCreator = {
  */
 export function changeNavigationIndex(index) {
     return dispatch => {
-        dispatch(changeNavigationIndexActionCreator.pending());
-        try{
-            dispatch(changeNavigationIndexActionCreator.success(index));
-        } catch(err) {
-            dispatch(changeNavigationIndexActionCreator.error(err));
-        }
+        dispatch(changeNavigationIndexActionCreator.success(index));
     }
 }

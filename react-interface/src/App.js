@@ -13,7 +13,11 @@ import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui
 // Component imports
 import LandingPage from './components/LandingPage';
 import ConsentFormPage from './components/ConsentFormPage';
-
+import TaskSelectionPage from './components/TaskSelectionPage';
+import PrePuzzlePage from './components/PrePuzzlePage';
+import PuzzlePage from './components/PuzzlePage';
+import SurveyPage from './components/SurveyPage';
+import ThankYouPage from './components/ThankYouPage';
 
 // Theme, used for global MUI styling definitions
 const theme = {
@@ -23,7 +27,15 @@ const theme = {
 }
 
 // Pages, stored dynamically
-const pages = [LandingPage, ConsentFormPage]
+const pages = [
+  LandingPage, 
+  ConsentFormPage, 
+  TaskSelectionPage, 
+  PrePuzzlePage, 
+  PuzzlePage,
+  SurveyPage,
+  ThankYouPage
+]
 
 class App extends React.Component {
   constructor(props) {
