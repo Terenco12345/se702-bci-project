@@ -8,7 +8,7 @@ import { Typography, Button } from '@material-ui/core'
 const styles = theme => ({
     root: {
         padding: '5vh',
-        paddingTop: '20vh',
+        paddingTop: '10vh',
         textAlign: 'center',
         maxWidth: '800px',
         margin: 'auto'
