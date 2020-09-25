@@ -1,5 +1,5 @@
 {
-  "name": "react-interface",
+  "name": "BCI-Research-Interface",
   "homepage": "./",
   "main": "./public/start-electron.js",
   "version": "0.1.0",
