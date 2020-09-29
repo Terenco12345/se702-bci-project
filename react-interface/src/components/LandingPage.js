@@ -53,7 +53,7 @@ class LandingPage extends React.Component {
                     <Button
                         className={classes.button}
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         onClick={this.props.nextPage}
                     >
                         Press here to begin!
