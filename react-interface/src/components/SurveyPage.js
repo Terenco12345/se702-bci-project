@@ -65,7 +65,7 @@ class SurveyPage extends React.Component {
                     </Paper>
                     <Button className={classes.button}
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         onClick={this.props.nextPage}>
                         Next
                     </Button>

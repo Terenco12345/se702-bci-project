@@ -58,7 +58,7 @@ class PrePuzzlePage extends React.Component {
                         <Button
                             className={classes.button}
                             variant="contained"
-                            color="primary"
+                            color="secondary"
                             onClick={this.props.nextPage}
                         >
                             Next
@@ -75,7 +75,7 @@ class PrePuzzlePage extends React.Component {
                         <Button
                             className={classes.button}
                             variant="contained"
-                            color="primary"
+                            color="secondary"
                             onClick={this.props.nextPage}
                         >
                             Next
