@@ -36,6 +36,7 @@ Within the python-eeg folder, run the following command to install the packages:
 
 ```bash
 pip install NeuroSkyPy
+pip install pyserial
 ```
 
 Data collection was completed using the Neurosky Mindwave Mobile 2. To replicate the data collection, ensure the Neurosky Mindwave drivers are installed beforehand. These drivers can be found at:
