@@ -55,6 +55,7 @@ The filename is in the following format, with timestamp and id for the session:
 Participant[participant id]Task[task id]Date[yyyy-mm-dd-hh-mm-ss].txt
 
 The log file's records one comma delineated row for each sample, the format for a row is the following:
+
 timestamp (hh-mm-ss), meditation, attention, raw eeg reading
 
 ## Experiment preparations
