@@ -15,7 +15,7 @@ Run the .exe file called **react-interface.exe**.
 
 ## Developers
 ### Development
-Install the dependencies with:
+Install the dependencies for **react-interface** and **backend** with:
 ```bash
 npm install
 ```
