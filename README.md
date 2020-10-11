@@ -49,6 +49,12 @@ Data collection was completed using the Neurosky Mindwave Mobile 2.
 To replicate the data collection, ensure the Neurosky Mindwave drivers are installed beforehand, these drivers can be found at:
 http://mindwavemobileplus.neurosky.com/#windows
 
+The filename is in the following format, with timestamp and id for the session:
+Participant[participant id]Task[task id]Date[yyyy-mm-dd-hh-mm-ss].txt
+
+The log file's records one comma delineated row for each sample, the format for a row is the following:
+timestamp (hh-mm-ss), meditation, attention, raw eeg reading
+
 ## Experiment preparations
 Ensure that all the experiment is conducted in a quiet environment as the Neurosky Mindwave is susceptible to noise.
 
