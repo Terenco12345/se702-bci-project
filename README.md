@@ -44,8 +44,10 @@ pip install NeuroSkyPy
 pip install pyserial
 ```
 
-Data collection was completed using the Neurosky Mindwave Mobile 2. To replicate the data collection, ensure the Neurosky Mindwave drivers are installed beforehand. These drivers can be found at:
-http://support.neurosky.com/kb/mindwave/mindwave-wont-work-on-mac-or-windows
+Data collection was completed using the Neurosky Mindwave Mobile 2. 
+
+To replicate the data collection, ensure the Neurosky Mindwave drivers are installed beforehand, these drivers can be found at:
+http://mindwavemobileplus.neurosky.com/#windows
 
 ## Experiment preparations
 Ensure that all the experiment is conducted in a quiet environment as the Neurosky Mindwave is susceptible to noise.
