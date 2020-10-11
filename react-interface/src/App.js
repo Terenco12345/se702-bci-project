@@ -14,8 +14,8 @@ import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui
 import LandingPage from './components/LandingPage';
 import ConsentFormPage from './components/ConsentFormPage';
 import TaskSelectionPage from './components/TaskSelectionPage';
-import PrePuzzlePage from './components/PrePuzzlePage';
-import PuzzlePage from './components/PuzzlePage';
+import PreQuestionsPage from './components/PreQuestionsPage';
+import QuestionsPage from './components/QuestionsPage';
 import SurveyPage from './components/SurveyPage';
 import ThankYouPage from './components/ThankYouPage';
 import ParticipantInformationSheetPage from './components/ParticipantInformationSheetPage';
@@ -33,8 +33,8 @@ const pages = [
   ParticipantInformationSheetPage,
   ConsentFormPage, 
   TaskSelectionPage, 
-  PrePuzzlePage, 
-  PuzzlePage,
+  PreQuestionsPage, 
+  QuestionsPage,
   SurveyPage,
   ThankYouPage
 ]

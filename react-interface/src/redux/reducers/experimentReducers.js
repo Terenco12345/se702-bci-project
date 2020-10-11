@@ -6,6 +6,7 @@ const initialState = {
     email: '',
     // Group - 'control' or 'meditation'
     group: '',
+    answers: []
 }
 
 // experiment reducer
