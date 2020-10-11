@@ -42,7 +42,7 @@ npm run start
 To deploy a Windows Electron application, run the following command:
 
 ```bash
-npm run electron-build
+npm run electron-package
 ```
 
 ### EEG Data Collection
