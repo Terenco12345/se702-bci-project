@@ -12,6 +12,11 @@ Run the .exe file called **react-interface.exe**.
 
 ## Developers
 ### Development
+Install the dependencies with:
+```bash
+npm install
+```
+
 Within the react-interface folder, run the following command to develop with Electron:
 
 ```bash
@@ -44,7 +49,9 @@ http://support.neurosky.com/kb/mindwave/mindwave-wont-work-on-mac-or-windows
 
 ## Experiment preparations
 Ensure that all the experiment is conducted in a quiet environment as the Neurosky Mindwave is susceptible to noise.
+
 Provide each participant with a participant ID and ensure the headset to attached properly to the partipant's head and the clip is placed onto the ear lobe with the wire correctly going behind the ear.
+
 Ensure that data recording is started before exeperiment begins 
 
 ## System Requirements 
