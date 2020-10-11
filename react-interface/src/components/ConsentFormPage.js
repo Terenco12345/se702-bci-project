@@ -1,8 +1,11 @@
 import React from 'react';
 
 // Material UI imports
-import { Paper, Slide, withStyles } from '@material-ui/core';
+import { Checkbox, Divider, FormControlLabel, Paper, Slide, TextField, withStyles } from '@material-ui/core';
 import { Typography, Button } from '@material-ui/core'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { changeExperimentState } from '../redux/actions/experimentActions';
 
 // JSS Styles for this page
 const styles = theme => ({
@@ -16,9 +19,11 @@ const styles = theme => ({
     content: {
         marginTop: theme.spacing(2),
         padding: '3vh',
+        textAlign: 'left'
     },
     paragraph: {
-        marginBottom: theme.spacing(2)
+        marginLeft: theme.spacing(2),
+        textIndent: theme.spacing(2)
     },
     button: {
         margin: theme.spacing(2),
@@ -31,7 +36,21 @@ class ConsentFormPage extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            transition: false
+            transition: false,
+            checks: [
+                false, // I have read the Participant Information Sheet, and understood the nature of the research and I have had the opportunity to ask questions and have had them answered to my satisfaction 
+                false, // I have read the Participant Information Sheet, and understood the nature of the research. I have had the opportunity to ask questions and have had them answered to my satisfaction. 
+                false, // I agree to take part in this research.
+                false, // I agree to my problem solving performance being recorded. 
+                false, // I agree for my EEG data to be recorded.
+                false, // I understand that my responses will be analysed separately from my information to ensure confidentiality. 
+                false, // I understand that I am free to withdraw my participation at any time, and to withdraw any data traceable up to me one month after participation. 
+                false, // I understand that the data will be used for a research project and potential publications.
+            ],
+            shouldMailFindings: false, // I wish/do not wish to receive a summary of findings, which can be emailed or mailed to me at this address: 
+            email: '',
+            consent: false,
+            participantId: "",
         }
     }
 
@@ -41,6 +60,43 @@ class ConsentFormPage extends React.Component {
 
     componentWillUnmount() {
         this.setState({ transition: false });
+    }
+
+    handleCheck(index) {
+        var newChecks = this.state.checks;
+        newChecks[index] = !this.state.checks[index]
+        this.setState({ checks: newChecks, consent: false })
+
+        console.log(this.state)
+    }
+
+    handleShouldMailFindings() {
+        this.setState({ shouldMailFindings: !this.state.shouldMailFindings })
+        this.setState({email: ''})
+    }
+
+    canConsent() {
+        // If every check is accepted, the user can consent
+        for (var i = 0; i < this.state.checks.length; i++) {
+            if (!this.state.checks[i]) {
+                return false;
+            }
+        }
+
+        // Check participant ID is valid - TO BE IMPLEMENTED PROPERLY
+        if (this.state.participantId === "") {
+            return false;
+        }
+
+        return true;
+    }
+
+    handleEmail(event){
+        this.setState({email: event.target.value})
+    }
+
+    handleParticipantId(event) {
+        this.setState({ participantId: event.target.value })
     }
 
     render() {
@@ -57,27 +113,68 @@ class ConsentFormPage extends React.Component {
                         Consent Form
                     </Typography>
                     <Typography variant="h5" align="left">
-                        First, we require you to read this consent form thoroughly. 
+                        We require you to read this consent form thoroughly.
                     </Typography>
                     <Typography variant="h5" align="left">
-                        Once you have read the form, click 'I consent'.
+                        Once you have read the form, click 'I consent'. If you agree with everything below, you may proceed.
                     </Typography>
                     <Paper elevation={3} className={classes.content}>
-                        <Typography className={classes.paragraph} align="left">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis dui elementum, commodo nunc sit amet, egestas risus.
-                            Integer sed lorem justo. Integer eget suscipit odio. Nam eget odio id metus auctor dignissim sit amet quis sem.
-                            Pellentesque at mollis ligula. Nam a libero a nisi laoreet faucibus. Phasellus id sem ut metus pharetra imperdiet quis a ligula.
-                            Integer facilisis nisi in nulla scelerisque, volutpat ultricies justo volutpat. Phasellus in erat metus.
-                            Quisque pulvinar tortor sit amet massa euismod, id congue tellus ultricies. Nunc sit amet ex mauris.
-                            Mauris tempus nunc a congue feugiat.
+                        <Typography variant="h6" align="left" style={{ marginBottom: 20 }}>
+                            Consent Form
                         </Typography>
-                        <Typography className={classes.paragraph} align="left">
-                            Donec semper nunc sed felis condimentum imperdiet. Ut luctus fermentum nulla, et rhoncus nisl ultrices vitae.
-                            Vestibulum in sagittis ipsum. Phasellus tellus nulla, hendrerit vitae purus vel, euismod porta justo.
-                            Proin efficitur fermentum ultricies. Vivamus ut tellus sit amet massa pellentesque porttitor in ut tortor.
-                            Fusce mauris velit, placerat quis lacus vel, sollicitudin auctor ex. Pellentesque dignissim et nulla id euismod.
-                            Duis bibendum dolor ut tortor congue tempus. Mauris vitae nibh turpis.
-                        </Typography>
+
+                        <FormControlLabel
+                            control={<Checkbox checked={this.state.checks[0]} onChange={() => { this.handleCheck(0) }} className={classes.paragraph} />}
+                            label="I have read the Participant Information Sheet, and understood the nature of the research.
+                            I have also had the opportunity to ask questions and have had them answered to my satisfaction"
+                        /><Divider style={{ marginBottom: 20 }} />
+                        <FormControlLabel
+                            control={<Checkbox checked={this.state.checks[1]} onChange={() => { this.handleCheck(1) }} className={classes.paragraph} />}
+                            label="I have read the Participant Information Sheet, and understood the nature of the research.
+                            I have also had the opportunity to ask questions and have had them answered to my satisfaction"
+                        /><Divider style={{ marginBottom: 20 }} />
+                        <FormControlLabel
+                            control={<Checkbox checked={this.state.checks[2]} onChange={() => { this.handleCheck(2) }} className={classes.paragraph} />}
+                            label="I agree to take part in this research"
+                        /><Divider style={{ marginBottom: 20 }} />
+                        <FormControlLabel
+                            control={<Checkbox checked={this.state.checks[3]} onChange={() => { this.handleCheck(3) }} className={classes.paragraph} />}
+                            label="I agree to my problem solving performance being recorded"
+                        /><Divider style={{ marginBottom: 20 }} />
+                        <FormControlLabel
+                            control={<Checkbox checked={this.state.checks[4]} onChange={() => { this.handleCheck(4) }} className={classes.paragraph} />}
+                            label="I agree for my EEG data to be recorded"
+                        /><Divider style={{ marginBottom: 20 }} />
+                        <FormControlLabel
+                            control={<Checkbox checked={this.state.checks[5]} onChange={() => { this.handleCheck(5) }} className={classes.paragraph} />}
+                            label="I understand that my responses will be analysed separately from my information to ensure confidentiality"
+                        /><Divider style={{ marginBottom: 20 }} />
+                        <FormControlLabel
+                            control={<Checkbox checked={this.state.checks[6]} onChange={() => { this.handleCheck(6) }} className={classes.paragraph} />}
+                            label="I understand that I am free to withdraw my participation at any time, and to withdraw any data traceable up to me one month after participation"
+                        /><Divider style={{ marginBottom: 20 }} />
+                        <FormControlLabel
+                            control={<Checkbox checked={this.state.checks[7]} onChange={() => { this.handleCheck(7) }} className={classes.paragraph} />}
+                            label=" I understand that the data will be used for a research project and potential publications"
+                        /><Divider style={{ marginBottom: 20 }} />
+                        <FormControlLabel
+                            control={<Checkbox checked={this.state.shouldMailFindings} onChange={() => { this.handleShouldMailFindings() }} className={classes.paragraph} />}
+                            label="(OPTIONAL) I wish/do not wish to receive a summary of findings."
+                        />
+
+                        {
+                            this.state.shouldMailFindings &&
+                            <div>
+                                <Typography className={classes.paragraph} style={{ textIndent: 0 }} align="left">
+                                    My email address (for receiving findings) is this:
+                                </Typography>
+                                <TextField className={classes.paragraph} style={{ textIndent: 0, width: 500 }} onChange={this.handleEmail.bind(this)} variant="outlined" label="Email"/>
+                            </div>
+                        }
+                        <br />
+                        <Divider style={{ marginBottom: 20 }} />
+                        <Typography>Please enter your participant ID before continuing</Typography>
+                        <TextField label="Participant ID" onChange={this.handleParticipantId.bind(this)}></TextField>
                     </Paper>
                     <Button className={classes.button}
                         variant="contained"
@@ -88,8 +185,12 @@ class ConsentFormPage extends React.Component {
                     <Button className={classes.button}
                         variant="contained"
                         color="secondary"
-                        onClick={this.props.nextPage}>
-                        I consent
+                        onClick={() => {
+                            this.props.changeExperimentState({participantId: this.state.participantId, email: this.state.email})
+                            this.props.nextPage()
+                        }}
+                        disabled={!this.canConsent()}>
+                        Next
                     </Button>
                 </div>
             </Slide>
@@ -97,5 +198,13 @@ class ConsentFormPage extends React.Component {
     }
 }
 
+const mapStateToProps = state => ({
+    experiment: state.experiment,
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    changeExperimentState: changeExperimentState,
+}, dispatch)
+
 // Export - Attaches Redux state, and styling
-export default withStyles(styles)(ConsentFormPage);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ConsentFormPage));
