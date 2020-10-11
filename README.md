@@ -52,7 +52,11 @@ Ensure that all the experiment is conducted in a quiet environment as the Neuros
 
 Provide each participant with a participant ID and ensure the headset to attached properly to the partipant's head and the clip is placed onto the ear lobe with the wire correctly going behind the ear.
 
-Ensure that data recording is started before exeperiment begins 
+Execute the python script and enter the partipant and task id.
+
+Ensure that data recording is started before experiment begins.
+
+Open the application UI for the participant.
 
 ## System Requirements 
 In order to run the project locally, you must ensure you have setup, installed and tested:
