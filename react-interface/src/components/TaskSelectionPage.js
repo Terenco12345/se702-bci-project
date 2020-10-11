@@ -6,6 +6,7 @@ import { Typography, Button } from '@material-ui/core'
 import { bindActionCreators } from 'redux';
 import { changeExperimentState } from '../redux/actions/experimentActions';
 import { connect } from 'react-redux';
+import { pushTimeEvent } from '../redux/actions/timeActions';
 
 // JSS Styles for this page
 const styles = theme => ({
@@ -39,11 +40,13 @@ class TaskSelectionPage extends React.Component {
 
     pressAlpha(){
         this.props.changeExperimentState({group: 'control'});
+        this.props.pushTimeEvent({identifier: "control group activity start"})
         this.props.nextPage();
     }
 
     pressGamma(){
         this.props.changeExperimentState({group: 'meditation'});
+        this.props.pushTimeEvent({identifier: "meditation group activity start"})
         this.props.nextPage();
     }
 
@@ -91,6 +94,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     changeExperimentState: changeExperimentState,
+    pushTimeEvent: pushTimeEvent
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(TaskSelectionPage));

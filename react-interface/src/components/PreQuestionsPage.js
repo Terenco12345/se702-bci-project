@@ -1,11 +1,18 @@
 import React from 'react';
 
 // Material UI imports
-import { Slide, withStyles } from '@material-ui/core';
+import { Slide, withStyles, Divider } from '@material-ui/core';
 import { Typography, Button } from '@material-ui/core'
+
+// Redux imports
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeExperimentState } from '../redux/actions/experimentActions';
+import { pushTimeEvent } from '../redux/actions/timeActions';
+
+// Other imports
+import { DEV_MODE } from './../utils/DevUtils';
+
 
 // JSS Styles for this page
 const styles = theme => ({
@@ -21,20 +28,40 @@ const styles = theme => ({
 })
 
 // React class component definition
-class PrePuzzlePage extends React.Component {
+class PreQuestionsPage extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            transition: false
+            transition: false,
+            seconds: 900
         }
     }
 
     componentDidMount() {
         this.setState({ transition: true });
+
+        this.setState({intervalId: setInterval(() => {
+            if (this.state.seconds - 1 >= 0) {
+                // Increment counter
+                this.setState({ seconds: this.state.seconds - 1 })
+            }
+        }, 1000)});
     }
 
     componentWillUnmount() {
         this.setState({ transition: false });
+        clearInterval(this.state.intervalId);
+    }
+
+    getTimeDisplayString(){
+        if(this.state.seconds > 0){
+            var minutes = Math.floor(this.state.seconds / 60);
+            var seconds = this.state.seconds - minutes * 60;
+
+            return minutes+"m, "+seconds+"s"
+        } else {
+            return "Time up! Please proceed to the next step."
+        }
     }
 
     render() {
@@ -55,11 +82,19 @@ class PrePuzzlePage extends React.Component {
                         <Typography variant="h5">
                             Do what you would normally do on your phone, until 15 minutes have passed.
                         </Typography>
+                        <br/><br/>
+                        <Typography variant="h4">
+                            {this.getTimeDisplayString()}
+                        </Typography>
                         <Button
                             className={classes.button}
                             variant="contained"
                             color="secondary"
-                            onClick={this.props.nextPage}
+                            disabled={this.state.seconds > 0 && !DEV_MODE}
+                            onClick={()=>{
+                                this.props.pushTimeEvent({identifier: "control group activity end, starting question 1"})
+                                this.props.nextPage()
+                            }}
                         >
                             Next
                         </Button>
@@ -72,11 +107,19 @@ class PrePuzzlePage extends React.Component {
                         <Typography variant="h5">
                             Take deep breaths.
                         </Typography>
+                        <br/><br/>
+                        <Typography variant="h4">
+                            {this.getTimeDisplayString()}
+                        </Typography>
                         <Button
                             className={classes.button}
                             variant="contained"
                             color="secondary"
-                            onClick={this.props.nextPage}
+                            disabled={this.state.seconds > 0 && !DEV_MODE}
+                            onClick={()=>{
+                                this.props.pushTimeEvent({identifier: "meditation activity end, starting question 1"})
+                                this.props.nextPage()
+                            }}
                         >
                             Next
                         </Button>
@@ -93,6 +136,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     changeExperimentState: changeExperimentState,
+    pushTimeEvent: pushTimeEvent
 }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(PrePuzzlePage));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(PreQuestionsPage));

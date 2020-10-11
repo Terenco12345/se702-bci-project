@@ -3,9 +3,15 @@ import React from 'react';
 // Material UI imports
 import { Checkbox, Divider, FormControlLabel, Paper, Slide, TextField, withStyles } from '@material-ui/core';
 import { Typography, Button } from '@material-ui/core'
+
+// Redux imports
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeExperimentState } from '../redux/actions/experimentActions';
+import { pushTimeEvent } from '../redux/actions/timeActions';
+
+// Other imports
+import { DEV_MODE } from './../utils/DevUtils';
 
 // JSS Styles for this page
 const styles = theme => ({
@@ -72,7 +78,7 @@ class ConsentFormPage extends React.Component {
 
     handleShouldMailFindings() {
         this.setState({ shouldMailFindings: !this.state.shouldMailFindings })
-        this.setState({email: ''})
+        this.setState({ email: '' })
     }
 
     canConsent() {
@@ -91,8 +97,8 @@ class ConsentFormPage extends React.Component {
         return true;
     }
 
-    handleEmail(event){
-        this.setState({email: event.target.value})
+    handleEmail(event) {
+        this.setState({ email: event.target.value })
     }
 
     handleParticipantId(event) {
@@ -157,24 +163,25 @@ class ConsentFormPage extends React.Component {
                             control={<Checkbox checked={this.state.checks[7]} onChange={() => { this.handleCheck(7) }} className={classes.paragraph} />}
                             label=" I understand that the data will be used for a research project and potential publications"
                         /><Divider style={{ marginBottom: 20 }} />
+                        <br />
+                        
+                        <Typography>Please enter your participant ID before continuing</Typography>
+                        <TextField label="Participant ID" onChange={this.handleParticipantId.bind(this)}></TextField>
+                        <br/>
+                        <br style={{ marginBottom: 20, marginTop:20 }} />
                         <FormControlLabel
-                            control={<Checkbox checked={this.state.shouldMailFindings} onChange={() => { this.handleShouldMailFindings() }} className={classes.paragraph} />}
+                            control={<Checkbox checked={this.state.shouldMailFindings} onChange={() => { this.handleShouldMailFindings() }}/>}
                             label="(OPTIONAL) I wish/do not wish to receive a summary of findings."
                         />
-
                         {
                             this.state.shouldMailFindings &&
                             <div>
                                 <Typography className={classes.paragraph} style={{ textIndent: 0 }} align="left">
                                     My email address (for receiving findings) is this:
                                 </Typography>
-                                <TextField className={classes.paragraph} style={{ textIndent: 0, width: 500 }} onChange={this.handleEmail.bind(this)} variant="outlined" label="Email"/>
+                                <TextField className={classes.paragraph} style={{ textIndent: 0, width: 500 }} onChange={this.handleEmail.bind(this)} variant="outlined" label="Email" />
                             </div>
                         }
-                        <br />
-                        <Divider style={{ marginBottom: 20 }} />
-                        <Typography>Please enter your participant ID before continuing</Typography>
-                        <TextField label="Participant ID" onChange={this.handleParticipantId.bind(this)}></TextField>
                     </Paper>
                     <Button className={classes.button}
                         variant="contained"
@@ -186,10 +193,11 @@ class ConsentFormPage extends React.Component {
                         variant="contained"
                         color="secondary"
                         onClick={() => {
-                            this.props.changeExperimentState({participantId: this.state.participantId, email: this.state.email})
+                            this.props.changeExperimentState({ participantId: this.state.participantId, email: this.state.email })
+                            this.props.pushTimeEvent({identifier: "consent form agreed"})
                             this.props.nextPage()
                         }}
-                        disabled={!this.canConsent()}>
+                        disabled={!this.canConsent() && !DEV_MODE}>
                         Next
                     </Button>
                 </div>
@@ -204,6 +212,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     changeExperimentState: changeExperimentState,
+    pushTimeEvent: pushTimeEvent
 }, dispatch)
 
 // Export - Attaches Redux state, and styling
