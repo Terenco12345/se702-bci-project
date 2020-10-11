@@ -1,6 +1,9 @@
 # Softeng 702 BCI Project
 Welcome to our Neurosky project!
 
+The application here records user responses and time taken to reach an answer. A survey in also included at the end that inquiries about the participants opinion about meditation and difficulty of the experiment, etc.
+The python script is used to record the EEG data obtained from the Neurosky Mindwave headset. 
+
 ## Users
 ### Instructions for installation
 Download the distribution package found here:
