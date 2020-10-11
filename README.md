@@ -10,7 +10,7 @@ Download the distribution package found here:
 
 https://github.com/Terenco12345/se702-bci-project/releases/tag/1.0
 
-Run the .exe file called **react-interface.exe**.
+Follow the instructions in the package, under **README.txt**.
 
 ## Developers
 ### Development
