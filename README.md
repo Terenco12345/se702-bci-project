@@ -44,3 +44,13 @@ http://support.neurosky.com/kb/mindwave/mindwave-wont-work-on-mac-or-windows
 
 ## Experiment preparations
 Ensure that all the experiment is conducted in a quiet environment as the Neurosky Mindwave is susceptible to noise.
+Provide each participant with a participant ID.
+
+## System Requirements 
+In order to run the project locally, you must ensure you have setup, installed and tested:
+
+-   `git`
+-   `node.js`
+-   `python3`
+
+This implementation is fully supported and tested on Windows 10
