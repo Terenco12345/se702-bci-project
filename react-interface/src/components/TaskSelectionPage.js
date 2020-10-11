@@ -66,14 +66,6 @@ class TaskSelectionPage extends React.Component {
                     <Button
                         className={classes.button}
                         variant="contained"
-                        color="primary"
-                        onClick={this.props.previousPage}
-                    >
-                        Go Back
-                    </Button>
-                    <Button
-                        className={classes.button}
-                        variant="contained"
                         color="secondary"
                         onClick={this.pressAlpha.bind(this)}
                     >

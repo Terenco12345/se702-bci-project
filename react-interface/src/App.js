@@ -18,6 +18,7 @@ import PrePuzzlePage from './components/PrePuzzlePage';
 import PuzzlePage from './components/PuzzlePage';
 import SurveyPage from './components/SurveyPage';
 import ThankYouPage from './components/ThankYouPage';
+import ParticipantInformationSheetPage from './components/ParticipantInformationSheetPage';
 
 // Theme, used for global MUI styling definitions
 const theme = {
@@ -29,6 +30,7 @@ const theme = {
 // Pages, stored dynamically
 const pages = [
   LandingPage, 
+  ParticipantInformationSheetPage,
   ConsentFormPage, 
   TaskSelectionPage, 
   PrePuzzlePage, 
