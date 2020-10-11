@@ -20,13 +20,19 @@ Install the dependencies with:
 npm install
 ```
 
-Within the react-interface folder, run the following command to develop with Electron:
+Within the **react-interface** folder, run the following command to develop with Electron:
 
 ```bash
 npm run electron-dev
 ```
 
-Within the react-interface folder, run the following command to develop in a browser:
+Within the **react-interface** folder, run the following command to develop in a browser:
+
+```bash
+npm run start
+```
+
+Within the **backend** folder, run the following command to start the file-handling server:
 
 ```bash
 npm run start
