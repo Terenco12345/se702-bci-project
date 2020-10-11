@@ -7,9 +7,8 @@ The python script is used to record the EEG data obtained from the Neurosky Mind
 ## Users
 ### Instructions for installation
 Download the distribution package found here:
-```
-Insert link here
-```
+
+https://github.com/Terenco12345/se702-bci-project/releases/tag/1.0
 
 Run the .exe file called **react-interface.exe**.
 
