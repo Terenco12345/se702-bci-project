@@ -52,11 +52,13 @@ Ensure that all the experiment is conducted in a quiet environment as the Neuros
 
 Provide each participant with a participant ID and ensure the headset to attached properly to the partipant's head and the clip is placed onto the ear lobe with the wire correctly going behind the ear.
 
-Execute the python script and enter the partipant and task id.
+Execute the python script and enter the partipant and task ID.
 
 Ensure that data recording is started before experiment begins.
 
 Open the application UI for the participant.
+
+Ensure the participant reads the PIS and consent form and has the opporunity to ask questions before starting the experiment.
 
 ## System Requirements 
 In order to run the project locally, you must ensure you have setup, installed and tested:
@@ -64,5 +66,6 @@ In order to run the project locally, you must ensure you have setup, installed a
 -   `git`
 -   `node.js`
 -   `python3`
+-   `Neurosky Mindwave driver`
 
 This implementation is fully supported and tested on Windows 10
