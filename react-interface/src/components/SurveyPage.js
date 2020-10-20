@@ -67,10 +67,12 @@ class SurveyPage extends React.Component {
         console.log(this.state);
     }
 
-    handleSubmit() {
-        this.props.changeExperimentState({ surveyAnswers: this.state.answers })
-        this.props.pushTimeEvent({ identifier: "survey completed" })
-        axios({
+    async handleSubmit() {
+        await Promise.all([
+            this.props.changeExperimentState({ surveyAnswers: this.state.answers }),
+            this.props.pushTimeEvent({ identifier: "survey completed" })
+        ]);
+        await axios({
             method: 'post',
             withCredentials: true,
             url: 'http://localhost:5000/', 
