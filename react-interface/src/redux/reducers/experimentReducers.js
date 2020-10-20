@@ -1,4 +1,5 @@
 import { CHANGE_EXPERIMENT_STATE } from './../actions/experimentActions';
+import { SURVEY_QUESTIONS } from './../../utils/QuestionUtils';
 
 // The initial state of the experiment state
 const initialState = {
@@ -6,7 +7,8 @@ const initialState = {
     email: '',
     // Group - 'control' or 'meditation'
     group: '',
-    answers: []
+    answers: [],
+    surveyAnswers: new Array(SURVEY_QUESTIONS.length).fill("")
 }
 
 // experiment reducer

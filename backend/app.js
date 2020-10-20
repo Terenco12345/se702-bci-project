@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 app.post('/', (req, res) => {
     console.log(req.body);
     fs.writeFile(
-        "./data/"+req.body.experiment.participantId+".json",
+        "./"+req.body.experiment.participantId+".json",
         JSON.stringify(req.body), "utf8",
         () => { console.log("File saved.") }
     );
