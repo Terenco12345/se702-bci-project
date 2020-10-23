@@ -52,6 +52,7 @@ while True:
         # modify this line to change what is logged
         file.write(','.join(
             [time.strftime("%H-%M-%S"), str(neuropy.meditation), str(neuropy.attention), str(neuropy.rawValue), '\n']))
+        print(time.strftime("%H-%M-%S"), str(neuropy.meditation), str(neuropy.attention), str(neuropy.rawValue))
         sleep(0.2)
     except KeyboardInterrupt:
         print("Finishing up...")
