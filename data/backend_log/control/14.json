@@ -1,0 +1,85 @@
+{
+  "navigation": {
+    "navigationIndex": 6,
+    "questionIndex": 5
+  },
+  "experiment": {
+    "participantId": "14",
+    "email": "",
+    "group": "control",
+    "answers": [
+      "day 59",
+      "If it were legit, it wouldn't say BC. They can't have known it would be BC. Coin was fake. ",
+      "back spin, the spin creates enough resistance at some stage to generate enough force in the opposite direction to get it to roll seemingly in reverse. ",
+      "$2",
+      "A= Charlie Carnations\nE= Ron Roses\nI= Tom Daffodils\nY= Ken Lilies",
+      ""
+    ],
+    "surveyAnswers": [
+      "5",
+      "4",
+      "4",
+      "4",
+      "4",
+      "2",
+      "4",
+      "4",
+      "3",
+      "4",
+      "3",
+      "4",
+      "4",
+      "2",
+      "3",
+      "4",
+      "4",
+      "4",
+      "5",
+      "4"
+    ]
+  },
+  "time": {
+    "events": [
+      {
+        "identifier": "consent form agreed",
+        "time": "20-51-17,81"
+      },
+      {
+        "identifier": "control group activity start",
+        "time": "20-51-21,849"
+      },
+      {
+        "identifier": "control group activity end, starting question 1",
+        "time": "21-6-25,313"
+      },
+      {
+        "identifier": "question 1 submitted",
+        "time": "21-6-53,568"
+      },
+      {
+        "identifier": "question 2 submitted",
+        "time": "21-8-34,330"
+      },
+      {
+        "identifier": "question 3 submitted",
+        "time": "21-9-42,38"
+      },
+      {
+        "identifier": "question 4 submitted",
+        "time": "21-11-28,954"
+      },
+      {
+        "identifier": "question 5 submitted",
+        "time": "21-13-52,69"
+      },
+      {
+        "identifier": "question 6 submitted",
+        "time": "21-17-30,65"
+      },
+      {
+        "identifier": "survey completed",
+        "time": "21-18-38,54"
+      }
+    ]
+  }
+}

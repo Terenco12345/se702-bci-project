@@ -1,0 +1,86 @@
+{
+  "navigation": {
+    "navigationIndex": 6,
+    "questionIndex": 5
+  },
+  "experiment": {
+    "participantId": "7",
+    "email": "hasf1998@gmail.com",
+    "group": "control",
+    "answers": [
+      "30",
+      "The emperor may not have been a real emperor, or the date may have been inaccurate, implying it's fake. Or, because it's a very rare coin, it could have been stolen",
+      "Throwing it at an incline, which would cause the ball to roll down",
+      "2",
+      "Anna's partner is Charlie, Tom's partner is not Emily, Yvonn's partner is not Ron\nYvonne got lilies, not from Charlie and not from Ron\nTom gave daffodils, not to Anna, not to Emily an",
+      "X = 3 + y -2z\nX = -10 -y +3z\n3+y-2z=-10-y+3z\n-5z+2y=-13\ny=-13+5z)"
+    ],
+    "surveyAnswers": [
+      "3",
+      "4",
+      "5",
+      "2",
+      "1",
+      "1",
+      "1",
+      "5",
+      "2",
+      "1",
+      "2",
+      "3",
+      "5",
+      "3",
+      "4",
+      "4",
+      "3",
+      "2",
+      "2",
+      "2",
+      "5"
+    ]
+  },
+  "time": {
+    "events": [
+      {
+        "identifier": "consent form agreed",
+        "time": "15-48-12,823"
+      },
+      {
+        "identifier": "control group activity start",
+        "time": "15-48-17,637"
+      },
+      {
+        "identifier": "control group activity end, starting question 1",
+        "time": "16-3-22,885"
+      },
+      {
+        "identifier": "question 1 submitted",
+        "time": "16-5-12,763"
+      },
+      {
+        "identifier": "question 2 submitted",
+        "time": "16-7-22,472"
+      },
+      {
+        "identifier": "question 3 submitted",
+        "time": "16-7-55,580"
+      },
+      {
+        "identifier": "question 4 submitted",
+        "time": "16-9-2,823"
+      },
+      {
+        "identifier": "question 5 submitted",
+        "time": "16-12-56,932"
+      },
+      {
+        "identifier": "question 6 submitted",
+        "time": "16-16-2,162"
+      },
+      {
+        "identifier": "survey completed",
+        "time": "16-17-7,528"
+      }
+    ]
+  }
+}
